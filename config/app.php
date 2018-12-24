@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'locale' => 'zh_CN',
+    'locale' => 'zh-CN',
     'faker_locale' => 'zh_CN',
 
     /*
@@ -92,7 +92,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'zh_CN',
+    'fallback_locale' => 'zh-CN',
 
     /*
     |--------------------------------------------------------------------------
