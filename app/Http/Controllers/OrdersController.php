@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\InvalidRequestException;
 use App\Http\Requests\OrderRequest;
+use App\Jobs\CloseOrder;
 use App\Models\Order;
 use App\Models\ProductSku;
 use App\Models\UserAddress;
@@ -15,7 +16,7 @@ class OrdersController extends Controller
     {
         $user = $request->user();
 // 开启一个数据库事务
-        $order = \DB::transaction(function () use ($user, $request) {
+        DB::transaction(function () use ($user, $request) {
             $address = UserAddress::find($request->input('address_id'));
 // 更新此地址的最后使用时间
             $address->update(['last_used_at' => Carbon::now()]);
@@ -61,9 +62,9 @@ class OrdersController extends Controller
             $skuIds = collect($items)->pluck('sku_id');
             $user->cartItems()->whereIn('product_sku_id', $skuIds)->delete();
 
+            $this->dispatch(new CloseOrder($order, config('app.order_ttl')));
             return $order;
         });
 
-        return $order;
     }
 }
