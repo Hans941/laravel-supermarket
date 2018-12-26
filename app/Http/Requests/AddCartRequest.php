@@ -22,7 +22,7 @@ class AddCartRequest extends Request
                         return;
                     }
                     if (!$sku->product->on_sale) {
-                        $fail('该商品未上架');
+                        $faiwl('该商品未上架');
                         return;
                     }
                     if ($sku->stock === 0) {
