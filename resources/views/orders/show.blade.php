@@ -122,7 +122,7 @@
                   <div class="value">{{ $order->extra['refund_disagree_reason'] }}</div>
               </div>
           @endif
-          
+
       </div>
     </div>
   </div>
