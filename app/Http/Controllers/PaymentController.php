@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderPaid;
 use App\Exceptions\InvalidRequestException;
 use App\Models\Order;
 use Carbon\Carbon;
@@ -22,7 +23,7 @@ class PaymentController extends Controller
         return app('alipay')->web([
             'out_trade_no' => $order->no, // 订单编号，需保证在商户端不重复
             'total_amount' => $order->total_amount, // 订单金额，单位元，支持小数点后两位
-            'subject'      => '支付 Laravel Shop 的订单：'.$order->no, // 订单标题
+            'subject'      => '支付 Laravel Shop 的订单：' . $order->no, // 订单标题
         ]);
     }
 
@@ -40,10 +41,10 @@ class PaymentController extends Controller
     public function alipayNotify()
     {
         // 校验输入参数
-        $data  = app('alipay')->verify();
+        $data = app('alipay')->verify();
         // 如果订单状态不是成功或者结束，则不走后续的逻辑
         // 所有校验状态：https://docs.open.alipay.com/59/103672
-        if(!in_array($data->trade_status, ['TRADE_SUCCESS', 'TRADE_FINISHED'])) {
+        if (!in_array($data->trade_status, ['TRADE_SUCCESS', 'TRADE_FINISHED'])) {
             return app('alipay')->success();
         }
         // $data->out_trade_no 拿到订单流水号，并在数据库中查询
@@ -63,7 +64,13 @@ class PaymentController extends Controller
             'payment_method' => 'alipay', // 支付方式
             'payment_no'     => $data->trade_no, // 支付宝订单号
         ]);
-
+        $this->afterPaid($order);
         return app('alipay')->success();
     }
+
+    protected function afterPaid(Order $order)
+    {
+        event(new OrderPaid($order));
+    }
+
 }
