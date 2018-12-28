@@ -22,13 +22,6 @@ class ProductsController extends Controller
             ->body($this->grid());
     }
 
-    public function show($id, Content $content)
-    {
-        return $content
-            ->header('商品详细')
-            ->body($this->detail($id));
-    }
-
     public function edit($id, Content $content)
     {
         return $content
