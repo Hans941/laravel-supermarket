@@ -11,7 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(\Encore\Admin\Auth\Database\AdminTablesSeeder::class);
         $this->call(UsersSeeder::class);
         $this->call(UserAddressesSeeder::class);
         $this->call(ProductsSeeder::class);
