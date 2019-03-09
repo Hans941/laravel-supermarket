@@ -1,6 +1,6 @@
--- MySQL dump 10.13  Distrib 5.7.23, for macos10.13 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.23, for osx10.9 (x86_64)
 --
--- Host: localhost    Database: test_supermarket
+-- Host: 127.0.0.1    Database: db_supermarket
 -- ------------------------------------------------------
 -- Server version	5.7.23
 
@@ -21,7 +21,7 @@
 
 LOCK TABLES `admin_menu` WRITE;
 /*!40000 ALTER TABLE `admin_menu` DISABLE KEYS */;
-INSERT INTO `admin_menu` VALUES (1,2,6,'Index','fa-bar-chart','/',NULL,'2019-01-02 00:25:40'),(2,0,5,'Admin','fa-tasks','',NULL,'2019-01-02 00:25:40'),(3,2,7,'Users','fa-users','auth/users',NULL,'2019-01-02 00:25:40'),(4,2,8,'Roles','fa-user','auth/roles',NULL,'2019-01-02 00:25:40'),(5,2,9,'Permission','fa-ban','auth/permissions',NULL,'2019-01-02 00:25:40'),(6,2,10,'Menu','fa-bars','auth/menu',NULL,'2019-01-02 00:25:41'),(7,2,11,'Operation log','fa-history','auth/logs',NULL,'2019-01-02 00:25:41'),(8,0,1,'用户管理','fa-users','users','2019-01-02 00:20:48','2019-01-02 00:20:58'),(9,0,2,'商品管理','fa-amazon','products','2019-01-02 00:24:10','2019-01-02 00:24:15'),(10,0,3,'订单管理','fa-anchor','orders','2019-01-02 00:24:37','2019-01-02 00:24:42'),(11,0,4,'优惠券','fa-rmb','coupon_codes','2019-01-02 00:25:36','2019-01-02 00:25:40');
+INSERT INTO `admin_menu` VALUES (1,2,7,'Index','fa-bar-chart','/',NULL,'2019-03-08 22:50:29'),(2,0,6,'Admin','fa-tasks','',NULL,'2019-03-08 22:50:29'),(3,2,8,'Users','fa-users','auth/users',NULL,'2019-03-08 22:50:29'),(4,2,9,'Roles','fa-user','auth/roles',NULL,'2019-03-08 22:50:29'),(5,2,10,'Permission','fa-ban','auth/permissions',NULL,'2019-03-08 22:50:29'),(6,2,11,'Menu','fa-bars','auth/menu',NULL,'2019-03-08 22:50:29'),(7,2,12,'Operation log','fa-history','auth/logs',NULL,'2019-03-08 22:50:29'),(8,0,1,'用户管理','fa-users','users','2019-01-02 00:20:48','2019-01-02 00:20:58'),(9,0,2,'商品管理','fa-amazon','products','2019-01-02 00:24:10','2019-01-02 00:24:15'),(10,0,3,'订单管理','fa-anchor','orders','2019-01-02 00:24:37','2019-01-02 00:24:42'),(11,0,4,'优惠券','fa-rmb','coupon_codes','2019-01-02 00:25:36','2019-01-02 00:25:40'),(12,0,5,'类目','fa-bars','/categories','2019-03-08 22:50:19','2019-03-08 22:50:29');
 /*!40000 ALTER TABLE `admin_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -41,7 +41,7 @@ UNLOCK TABLES;
 
 LOCK TABLES `admin_role_menu` WRITE;
 /*!40000 ALTER TABLE `admin_role_menu` DISABLE KEYS */;
-INSERT INTO `admin_role_menu` VALUES (1,2,NULL,NULL);
+INSERT INTO `admin_role_menu` VALUES (1,2,NULL,NULL),(1,12,NULL,NULL),(2,12,NULL,NULL);
 /*!40000 ALTER TABLE `admin_role_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,4 +103,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-02 17:01:14
+-- Dump completed on 2019-03-09 17:33:49
